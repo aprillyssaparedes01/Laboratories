@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Grade Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #4a148c;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+        
+        th,
+        td {
+            padding: 10px;
+        }
+        
+        th {
+            background: #6a1b9a;
+            color: white;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .fail {
+            color: #c62828;
+            font-weight: bold;
+        }
+        
+        button {
+            background: #6a1b9a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #4a148c;
+        }
+        
+        .form-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #f1f1f1;
+        }
+        
+        input {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Student Grade Analyzer</h1>
+
+        <h2>Student Records</h2>
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Grades</th>
+                    <th>Average</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h3 id="extremes"></h3>
+        <h3 id="threshold"></h3>
+        <h3 id="passFail"></h3>
+
+        <button onclick="loadMoreStudents()">➕ Load More Students</button>
+
+
+        <div class="form-section">
+            <h2>Add New Student</h2>
+            <input type="text" id="studentName" placeholder="Enter student name">
+            <input type="text" id="studentGrades" placeholder="Enter grades (comma separated)">
+            <br>
+            <button onclick="addStudent()">➕ Add Student</button>
+        </div>
+    </div>
+
+    <script>
+        const students = [{
+            name: "Airene",
+            grades: [85, 90, 78]
+        }, {
+            name: "Chares",
+            grades: [60, 70, 65]
+        }, {
+            name: "Keanu",
+            grades: [95, 92, 88]
+        }, {
+            name: "Jatomie",
+            grades: [45, 55, 50]
+        }];
+
+        function calculateAverage(student) {
+            const sum = student.grades.reduce((a, b) => a + b, 0);
+            return sum / student.grades.length;
+        }
+
+        function findExtremes(students) {
+            let highest = students[0];
+            let lowest = students[0];
+
+            students.forEach(student => {
+                const avg = calculateAverage(student);
+                if (avg > calculateAverage(highest)) highest = student;
+                if (avg < calculateAverage(lowest)) lowest = student;
+            });
+
+            return {
+                highest,
+                lowest
+            };
+        }
+
+        function filterAboveThreshold(students, threshold) {
+            return students.filter(student => calculateAverage(student) > threshold);
+        }
+
+        function groupByPassFail(students, passMark = 60) {
+            return {
+                pass: students.filter(s => calculateAverage(s) >= passMark),
+                fail: students.filter(s => calculateAverage(s) < passMark)
+            };
+        }
+
+        function fetchAdditionalStudents() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve([{
+                        name: "Eloisa",
+                        grades: [72, 80, 78]
+                    }, {
+                        name: "Elcy",
+                        grades: [40, 50, 45]
+                    }]);
+                }, 1000);
+            });
+        }
+
+        function displayStudents(list) {
+            const tbody = document.querySelector("#studentTable tbody");
+            tbody.innerHTML = "";
+
+            list.forEach(s => {
+                const avg = calculateAverage(s).toFixed(2);
+                const status = avg >= 60 ? `<span class="highlight">Pass</span>` : `<span class="fail">Fail</span>`;
+                const row = `
+        <tr>
+            <td>${s.name}</td>
+            <td>${s.grades.join(", ")}</td>
+            <td>${avg}</td>
+            <td>${status}</td>
+        </tr>
+        `;
+                tbody.innerHTML += row;
+            });
+
+            const {
+                highest,
+                lowest
+            } = findExtremes(list);
+            document.getElementById("extremes").innerText =
+                ` Highest: ${highest.name} (${calculateAverage(highest).toFixed(2)}) |
+        Lowest: ${lowest.name} (${calculateAverage(lowest).toFixed(2)})`;
+
+            const thresholdStudents = filterAboveThreshold(list, 75).map(s => s.name).join(", ") || "None";
+            document.getElementById("threshold").innerText = ` Above 75: ${thresholdStudents}`;
+
+            const groups = groupByPassFail(list);
+            document.getElementById("passFail").innerText =
+                ` Pass: ${groups.pass.map(s => s.name).join(", ") || "None"} | 
+        Fail: ${groups.fail.map(s => s.name).join(", ") || "None"}`;
+        }
+
+        async function loadMoreStudents() {
+            const newStudents = await fetchAdditionalStudents();
+            students.push(...newStudents);
+            displayStudents(students);
+        }
+
+
+        function addStudent() {
+            const name = document.getElementById("studentName").value.trim();
+            const gradesInput = document.getElementById("studentGrades").value.trim();
+
+            if (!name || !gradesInput) {
+                alert("Please enter both name and grades!");
+                return;
+            }
+
+            const grades = gradesInput.split(",").map(g => parseInt(g.trim())).filter(n => !isNaN(n));
+
+            if (grades.length === 0) {
+                alert("Please enter valid grades!");
+                return;
+            }
+
+            students.push({
+                name,
+                grades
+            });
+            displayStudents(students);
+
+
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentGrades").value = "";
+        }
+
+
+        displayStudents(students);
+    </script>
+</body>
+
+</html>
