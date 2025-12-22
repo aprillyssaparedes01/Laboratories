@@ -1,0 +1,21 @@
+Êþº¾   A ?
+       java/lang/Object <init> ()V	  	  
+ 
+  'com/dugan/lab7/service/ProductService repo /Lcom/dugan/lab7/repository/ProductRepository;
+       -com/dugan/lab7/repository/ProductRepository  findAll ()Ljava/util/List;
+     findById ((Ljava/lang/Object;)Ljava/util/Optional;
+       java/util/Optional orElse &(Ljava/lang/Object;)Ljava/lang/Object;   com/dugan/lab7/entity/Product
+  
+  ! " #  setName (Ljava/lang/String;)V
+  % &  save 2(Lcom/dugan/lab7/repository/ProductRepository;)V Code LineNumberTable LocalVariableTable this )Lcom/dugan/lab7/service/ProductService; MethodParameters getAll 	Signature 5()Ljava/util/List<Lcom/dugan/lab7/entity/Product;>;  getById 3(Ljava/lang/Long;)Lcom/dugan/lab7/entity/Product; id Ljava/lang/Long; add 5(Ljava/lang/String;)Lcom/dugan/lab7/entity/Product; name Ljava/lang/String; p !Lcom/dugan/lab7/entity/Product; 
+SourceFile ProductService.java RuntimeVisibleAnnotations (Lorg/springframework/stereotype/Service; !       
+       '  (   F     
+*· *+µ  ±    )          	  *       
+ + ,     
+ 
+   -    
+    .   (   4     
+*´  ¹ 
+ °    )        *       
+ + ,   /    0  1 2  (   F     *´  +¹  ¶ À °    )        *        + ,      3 4  -    3    5 6  (   a     » Y· M,+¶  *´  ,¹ $ À °    )          
+  *         + ,      7 8    9 :  -    7    ;    < =     >  

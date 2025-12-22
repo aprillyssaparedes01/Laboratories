@@ -1,0 +1,47 @@
+ ˛∫æ   A }	       com/dugan/lab7/entity/Invoice id Ljava/lang/Long;	   	 
+ customer "Lcom/dugan/lab7/entity/Customer;	   
+  products Ljava/util/List;
+     canEqual (Ljava/lang/Object;)Z
+     getId ()Ljava/lang/Long;
+       java/lang/Object equals
+     
+getCustomer $()Lcom/dugan/lab7/entity/Customer;
+  ! " # 
+getProducts ()Ljava/util/List;
+  % & ' hashCode ()I
+ ) *  + , - java/lang/String  valueOf &(Ljava/lang/Object;)Ljava/lang/String;   / 0 1 makeConcatWithConstants H(Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  3 4 5 <init> ()V RuntimeVisibleAnnotations Ljakarta/persistence/Id; $Ljakarta/persistence/GeneratedValue; Ljakarta/persistence/ManyToOne;  Ljakarta/persistence/JoinColumn; name 
+customer_id 	Signature 3Ljava/util/List<Lcom/dugan/lab7/entity/Product;>;  Ljakarta/persistence/ManyToMany; Ljakarta/persistence/JoinTable; invoice_products 
+joinColumns 
+invoice_id inverseJoinColumns 
+product_id Code LineNumberTable LocalVariableTable this !Lcom/dugan/lab7/entity/Invoice; RuntimeInvisibleAnnotations Llombok/Generated; 5()Ljava/util/List<Lcom/dugan/lab7/entity/Product;>; setId (Ljava/lang/Long;)V MethodParameters 
+setCustomer %(Lcom/dugan/lab7/entity/Customer;)V 
+setProducts (Ljava/util/List;)V LocalVariableTypeTable 6(Ljava/util/List<Lcom/dugan/lab7/entity/Product;>;)V o Ljava/lang/Object; other  this$id other$id 
+this$customer other$customer 
+this$products other$products 
+StackMapTable PRIME I result $id 	$customer 	$products toString ()Ljava/lang/String; E(Ljava/lang/Long;Lcom/dugan/lab7/entity/Customer;Ljava/util/List;)V h(Ljava/lang/Long;Lcom/dugan/lab7/entity/Customer;Ljava/util/List<Lcom/dugan/lab7/entity/Product;>;)V 
+SourceFile Invoice.java Ljakarta/persistence/Entity; BootstrapMethods p %Invoice(id=, customer=, products=) r
+ s t  u 0 v $java/lang/invoke/StringConcatFactory ò(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite; InnerClasses  y %java/lang/invoke/MethodHandles$Lookup  { java/lang/invoke/MethodHandles Lookup !          6   
+  7   8    	 
+  6     9   :  ;s <  
+   =    > 6   -  ?   @  ;s A B[ @ :  ;s C D[ @ :  ;s E      F   /     *¥ ∞    G        H        I J   K     L       F   /     *¥  ∞    G        H        I J   K     L    " #  F   /     *¥ 
+∞    G        H        I J   =    M K     L    N O  F   :     *+µ ±    G        H        I J         P      K     L    Q R  F   :     *+µ  ±    G        H        I J      	 
+  P    	  K     L    S T  F   L     *+µ 
+±    G        H        I J      
+   U        
+ >  P    
+  =    V K     L       F  8  	   ç+*¶ ¨+¡ ö ¨+¿ M,*∂ ö ¨*∂ N,∂ :-« 
+∆ ß -∂ ö ¨*∂ :,∂ :« 
+∆ ß 
+∂ ö ¨*∂  : ,∂  : « 
+∆ ß 
+ ∂ ö ¨¨    G        H   \ 	   ç I J     ç W X   x Y J  $ i Z X  * c [ X  G F \ X  M @ ] X  l ! ^ X   r  _ X  `   +  ¸   ˝     ˝     	˝     	 P    W  K     L       F   9     +¡ ¨    G        H        I J      Y X  P    Y  K     L    & '  F  .     U;<=*∂ N;h-« +ß  -∂ $`=*∂ :;h« +ß ∂ $`=*∂  :;h« +ß ∂ $`=¨    G        H   >    U I J    R a b   P c b  
+ K d X  # 2 e X  >  f X  `   w ˇ       ˇ       ˇ         ˇ         ˇ           ˇ            K     L    g h  F   B     *∂ *∂ ∏ (*∂  ∏ (∫ .  ∞    G        H        I J   K     L    4 5  F   /     *∑ 2±    G       	 H        I J   K     L    4 i  F   n     *∑ 2*+µ *,µ  *-µ 
+±    G       
+ H   *     I J            	 
+     
+   U        
+ >  P   
+   	  
+  =    j K     L    k    l 6     m   n     q  o w   
+  x z | 

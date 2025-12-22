@@ -1,0 +1,29 @@
+Êþº¾   A ^
+       java/lang/Object <init> ()V	  	  
+ 
+  'com/dugan/lab7/service/InvoiceService 
+invoiceRepo /Lcom/dugan/lab7/repository/InvoiceRepository;	     customerRepo 0Lcom/dugan/lab7/repository/CustomerRepository;	     
+productRepo /Lcom/dugan/lab7/repository/ProductRepository;
+       -com/dugan/lab7/repository/InvoiceRepository  findAll ()Ljava/util/List;
+     findById ((Ljava/lang/Object;)Ljava/util/Optional;
+   !  " # $ java/util/Optional orElse &(Ljava/lang/Object;)Ljava/lang/Object;  & com/dugan/lab7/entity/Invoice
+ (   ) .com/dugan/lab7/repository/CustomerRepository  +  com/dugan/lab7/entity/Customer
+ - .  / 0 1 -com/dugan/lab7/repository/ProductRepository 
+findAllById &(Ljava/lang/Iterable;)Ljava/util/List;
+ % 
+ % 4 5 6 
+setCustomer %(Lcom/dugan/lab7/entity/Customer;)V
+ % 8 9 : 
+setProducts (Ljava/util/List;)V
+  < = $ save ‘(Lcom/dugan/lab7/repository/InvoiceRepository;Lcom/dugan/lab7/repository/CustomerRepository;Lcom/dugan/lab7/repository/ProductRepository;)V Code LineNumberTable LocalVariableTable this )Lcom/dugan/lab7/service/InvoiceService; MethodParameters getAll 	Signature 5()Ljava/util/List<Lcom/dugan/lab7/entity/Invoice;>;  getById 3(Ljava/lang/Long;)Lcom/dugan/lab7/entity/Invoice; id Ljava/lang/Long; add C(Ljava/lang/Long;Ljava/util/List;)Lcom/dugan/lab7/entity/Invoice; 
+customerId 
+productIds Ljava/util/List; customer "Lcom/dugan/lab7/entity/Customer; products  invoice !Lcom/dugan/lab7/entity/Invoice; LocalVariableTypeTable "Ljava/util/List<Ljava/lang/Long;>; 3Ljava/util/List<Lcom/dugan/lab7/entity/Product;>; U(Ljava/lang/Long;Ljava/util/List<Ljava/lang/Long;>;)Lcom/dugan/lab7/entity/Invoice; 
+SourceFile InvoiceService.java RuntimeVisibleAnnotations (Lorg/springframework/stereotype/Service; !       
+                 >  ?   l     *· *+µ  *,µ 
+*-µ ±    @          	      A   *     B C      
+               D   
+ 
+          E   ?   4     
+*´  ¹  °    @        A       
+ B C   F    G  H I  ?   F     *´  +¹  ¶ À %°    @        A        B C      J K  D    J    L M  ?   Ï     C*´ 
++¹ ' ¶ À *N*´ ,¹ , :» %Y· 2:-¶ 3¶ 7*´  ¹ ; À %°    @       #  $  & ' ' - ( 4 * A   >    C B C     C N K    C O P   1 Q R   % S P  '  T U  V       C O W   % S X  D   	 N   O   F    Y  Z    [ \     ]  

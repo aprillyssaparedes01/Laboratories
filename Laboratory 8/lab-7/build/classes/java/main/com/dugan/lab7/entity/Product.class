@@ -1,0 +1,42 @@
+Êþº¾   A t	       com/dugan/lab7/entity/Product id Ljava/lang/Long;	   	 
+ name Ljava/lang/String;	   
+  invoices Ljava/util/List;
+     canEqual (Ljava/lang/Object;)Z
+     getId ()Ljava/lang/Long;
+       java/lang/Object equals
+      getName ()Ljava/lang/String;
+  ! " # 
+getInvoices ()Ljava/util/List;
+  % & ' hashCode ()I
+ ) *  + , - java/lang/String  valueOf &(Ljava/lang/Object;)Ljava/lang/String;   / 0 1 makeConcatWithConstants H(Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  3 4 5 <init> ()V RuntimeVisibleAnnotations Ljakarta/persistence/Id; $Ljakarta/persistence/GeneratedValue; 	Signature 3Ljava/util/List<Lcom/dugan/lab7/entity/Invoice;>;  Ljakarta/persistence/ManyToMany; mappedBy products Code LineNumberTable LocalVariableTable this !Lcom/dugan/lab7/entity/Product; RuntimeInvisibleAnnotations Llombok/Generated; 5()Ljava/util/List<Lcom/dugan/lab7/entity/Invoice;>; setId (Ljava/lang/Long;)V MethodParameters  setName (Ljava/lang/String;)V 
+setInvoices (Ljava/util/List;)V LocalVariableTypeTable 6(Ljava/util/List<Lcom/dugan/lab7/entity/Invoice;>;)V o Ljava/lang/Object; other  this$id other$id 	this$name 
+other$name 
+this$invoices other$invoices 
+StackMapTable PRIME I result $id $name 	$invoices toString 5(Ljava/lang/Long;Ljava/lang/String;Ljava/util/List;)V X(Ljava/lang/Long;Ljava/lang/String;Ljava/util/List<Lcom/dugan/lab7/entity/Invoice;>;)V 
+SourceFile Product.java Ljakarta/persistence/Entity; BootstrapMethods g !Product(id=, name=, invoices=) i
+ j k  l 0 m $java/lang/invoke/StringConcatFactory ˜(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite; InnerClasses  p %java/lang/invoke/MethodHandles$Lookup  r java/lang/invoke/MethodHandles Lookup !          6   
+  7   8    	 
+    
+   9    : 6   
+  ;  <s =      >   /     *´ °    ?        @        A B   C     D       >   /     *´  °    ?        @        A B   C     D    " #  >   /     *´ 
+°    ?        @        A B   9    E C     D    F G  >   :     *+µ ±    ?        @        A B         H      C     D    I J  >   :     *+µ  ±    ?        @        A B      	 
+  H    	  C     D    K L  >   L     *+µ 
+±    ?        @        A B      
+   M        
+ :  H    
+  9    N C     D       >  8  	   +*¦ ¬+Á š ¬+À M,*¶ š ¬*¶ N,¶ :-Ç 
+Æ § -¶ š ¬*¶ :,¶ :Ç 
+Æ § 
+¶ š ¬*¶  : ,¶  : Ç 
+Æ § 
+ ¶ š ¬¬    ?        @   \ 	    A B      O P   x Q B  $ i R P  * c S P  G F T P  M @ U P  l ! V P   r  W P  X   +  ü   ý     ý     	ý     	 H    O  C     D       >   9     +Á ¬    ?        @        A B      Q P  H    Q  C     D    & '  >  .     U;<=*¶ N;h-Ç +§  -¶ $`=*¶ :;hÇ +§ ¶ $`=*¶  :;hÇ +§ ¶ $`=¬    ?        @   >    U A B    R Y Z   P [ Z  
+ K \ P  # 2 ] P  >  ^ P  X   w ÿ       ÿ       ÿ         ÿ         ÿ           ÿ            C     D    _   >   ?     *¶ *¶ *¶  ¸ (º .  °    ?        @        A B   C     D    4 5  >   /     *· 2±    ?       	 @        A B   C     D    4 `  >   n     *· 2*+µ *,µ  *-µ 
+±    ?       
+ @   *     A B            	 
+     
+   M        
+ :  H   
+   	  
+  9    a C     D    b    c 6     d   e     h  f n   
+  o q s 
