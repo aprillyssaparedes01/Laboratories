@@ -1,0 +1,17 @@
+Êþº¾   A *
+       java/lang/Object <init> ()V	  	  
+ 
+  com/dugan/lab7/model/Product id Ljava/lang/Long;	     name Ljava/lang/String;	     price Ljava/lang/Double; Code LineNumberTable LocalVariableTable this  Lcom/dugan/lab7/model/Product; 7(Ljava/lang/Long;Ljava/lang/String;Ljava/lang/Double;)V MethodParameters getId ()Ljava/lang/Long; setId (Ljava/lang/Long;)V  getName ()Ljava/lang/String;  setName (Ljava/lang/String;)V getPrice ()Ljava/lang/Double; setPrice (Ljava/lang/Double;)V 
+SourceFile Product.java !       
+                      /     *· ±                               l     *· *+µ  *,µ 
+*-µ ±           
+  
+ 	   
+      *            
+                  
+ 
+                /     *´  °                               :     *+µ  ±                           
+       
+      !     /     *´ 
+°                         " #     :     *+µ 
+±                                      $ %     /     *´ °                         & '     :     *+µ ±                                      (    )
